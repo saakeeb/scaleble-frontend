@@ -1,7 +1,5 @@
 # Dashboard Application
 
-![Dashboard Preview](./image_255ea3.png)
-
 A modern, high-performance dashboard built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**.
 
 ## 🚀 Quick Start
