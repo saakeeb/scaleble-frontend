@@ -1,20 +1,19 @@
+'use client';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { User, Mail, Shield, Calendar } from 'lucide-react';
+import { useAuth } from '../auth/auth-provider';
 
-// Define the shape of the user prop based on usage
-interface ProfileProps {
-  user: {
-    name: string;
-    email: string;
-    role: string;
-  };
-}
+export function Profile() {
+    const { user } = useAuth();
 
-export function Profile({ user }: ProfileProps) {
+  if (!user) {
+    return null; 
+  }
   const getInitials = (name: string) => {
     return name
       .split(' ')

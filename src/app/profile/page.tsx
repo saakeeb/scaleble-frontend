@@ -1,14 +1,11 @@
-'use client';
+import { Profile } from "@/components/profile/profile";
+import { Metadata } from 'next';
 
-import { useAuth } from '@/components/auth/auth-provider';
-import { Profile } from '@/components/profile/profile';
+export const metadata: Metadata = {
+  title: 'Profile | Task Manager',
+  description: 'Describe your profile and manage your account settings',
+};
 
 export default function ProfilePage() {
-  const { user } = useAuth();
-
-  if (!user) {
-    return null; 
-  }
-
-  return <Profile user={user} />;
+  return <Profile />;
 }

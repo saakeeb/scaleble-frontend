@@ -1,30 +1,11 @@
-'use client';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { Home } from '@/components/home/home';
+import { Metadata } from 'next';
 
-export default function Home() {
-const router = useRouter();
+export const metadata: Metadata = {
+  title: 'Task Manager',
+  description: 'Streamline your workflow with our task management solution',
+};
 
-  useEffect(() => {
-    router.replace('/dashboard');
-  }, [router]);
-  return (
-    <div className="container mx-auto p-6">
-      <div className="space-y-4">
-        <Skeleton className="h-12" />
-        <Skeleton className="h-10 w-full" />
-        <div className="flex gap-3">
-          <Skeleton className="h-10 w-28" />
-          <Skeleton className="h-10 w-28" />
-          <Skeleton className="h-10 w-28" />
-        </div>
-        <div className="space-y-3 mt-6">
-          <Skeleton className="h-16 w-full" />
-          <Skeleton className="h-16 w-full" />
-          <Skeleton className="h-16 w-full" />
-        </div>
-      </div>
-    </div>
-  );
+export default function HomePage() {
+  return <Home />;
 }
