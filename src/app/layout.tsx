@@ -1,61 +1,52 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import '../styles/globals.css'
-import { defaultMetadata } from '@/lib/seo-helpers'
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { AuthProvider } from '@/components/auth/auth-provider';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-// Global layout metadata
 export const metadata: Metadata = {
-  ...defaultMetadata,
-  title: {
-    default: 'My Next.js App',
-    template: '%s | My Next.js App',
-  },
-  description: 'A high-performance Next.js application with best practices',
+  title: 'Dashboard Application',
+  description: 'Modern dashboard with authentication and data management',
   openGraph: {
-    ...defaultMetadata.openGraph,
-    locale: 'en_US',
-    siteName: 'My Next.js App',
-    type: 'website',
-    url: 'https://yourdomain.com',
+    images: [
+      {
+        url: 'https://bolt.new/static/og_default.png',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@yourhandle',
-    site: '@yourhandle',
+    images: [
+      {
+        url: 'https://bolt.new/static/og_default.png',
+      },
+    ],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
-  },
-  manifest: '/site.webmanifest',
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <div className="min-h-screen bg-background text-foreground">
-          {children}
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
