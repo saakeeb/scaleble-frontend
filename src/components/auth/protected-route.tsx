@@ -17,7 +17,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="mx-auto space-y-6">
         <div className="space-y-2">
           <Skeleton className="h-9 w-32" />
           <Skeleton className="h-5 w-64" />

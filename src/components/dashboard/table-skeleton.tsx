@@ -3,11 +3,11 @@ import { Card } from '@/components/ui/card';
 
 export function TableSkeleton() {
   return (
-    <Card className="p-6">
+    <Card className="p-6 border">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-10 w-[300px]" />
-          <Skeleton className="h-10 w-[100px]" />
+          <Skeleton className="h-10 w-3/4 md:w-1/2" />
+          <Skeleton className="h-10 w-1/4 md:w-1/6" />
         </div>
 
         <div className="space-y-3">
@@ -19,8 +19,8 @@ export function TableSkeleton() {
         </div>
 
         <div className="flex items-center justify-between pt-4">
-          <Skeleton className="h-10 w-[200px]" />
-          <Skeleton className="h-10 w-[300px]" />
+          <Skeleton className="h-10 w-1/3 md:w-1/4" />
+          <Skeleton className="h-10 w-2/3 md:w-1/2" />
         </div>
       </div>
     </Card>

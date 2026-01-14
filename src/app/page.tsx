@@ -1,21 +1,19 @@
 'use client';
-
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
-  const router = useRouter();
+const router = useRouter();
 
   useEffect(() => {
     router.replace('/dashboard');
   }, [router]);
-
   return (
-    <div className="container mx-auto p-6 max-w-6xl">
+    <div className="container mx-auto p-6">
       <div className="space-y-4">
-        <Skeleton className="h-12 w-[250px]" />
-        <Skeleton className="h-10 w-full max-w-md" />
+        <Skeleton className="h-12" />
+        <Skeleton className="h-10 w-full" />
         <div className="flex gap-3">
           <Skeleton className="h-10 w-28" />
           <Skeleton className="h-10 w-28" />
